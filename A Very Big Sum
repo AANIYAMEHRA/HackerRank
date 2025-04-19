@@ -1,0 +1,29 @@
+In this challenge, you need to calculate and print the sum of elements in an array, considering that some integers may be very large.
+
+Function Description
+
+Complete the  function with the following parameter(s):
+
+: an array of integers
+Return
+
+: the sum of the array elements
+Input Format
+
+The first line of the input consists of an integer .
+The next line contains  space-separated integers contained in the array.
+
+Output Format
+
+Return the integer sum of the elements in the array.
+
+
+CODE  //
+
+long aVeryBigSum(vector<long> ar) {
+    long sum = 0;
+    for (int i = 0; i < ar.size(); i++) {
+        sum += ar[i];
+    }
+    return sum;
+}
