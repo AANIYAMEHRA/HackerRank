@@ -1,0 +1,100 @@
+You will be given a square chess board with one queen and a number of obstacles placed on it. Determine how many squares the queen can attack.
+
+A queen is standing on an  chessboard. The chess board's rows are numbered from  to , going from bottom to top. Its columns are numbered from  to , going from left to right. Each square is referenced by a tuple, , describing the row, , and column, , where the square is located.
+
+The queen is standing at position . In a single move, she can attack any square in any of the eight directions (left, right, up, down, and the four diagonals). In the diagram below, the green circles denote all the cells the queen can attack from :
+
+
+CODE //
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to count the number of squares the queen can attack
+int queensAttack(int n, int k, int r_q, int c_q, vector<vector<int>> obstacles) {
+    set<pair<int, int>> obstacleSet;
+    for (auto &obs : obstacles) {
+        obstacleSet.insert({obs[0], obs[1]});
+    }
+
+    int directions[8][2] = {
+        {-1, 0}, {1, 0},  // vertical
+        {0, -1}, {0, 1},  // horizontal
+        {-1, -1}, {-1, 1}, // diagonals
+        {1, -1}, {1, 1}
+    };
+
+    int count = 0;
+
+    for (auto dir : directions) {
+        int x = r_q + dir[0];
+        int y = c_q + dir[1];
+
+        while (x >= 1 && x <= n && y >= 1 && y <= n && obstacleSet.find({x, y}) == obstacleSet.end()) {
+            count++;
+            x += dir[0];
+            y += dir[1];
+        }
+    }
+
+    return count;
+}
+
+// Utility functions
+string ltrim(const string &str) {
+    string s(str);
+    s.erase(s.begin(), find_if(s.begin(), s.end(), [](unsigned char ch) { return !isspace(ch); }));
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+    s.erase(find_if(s.rbegin(), s.rend(), [](unsigned char ch) { return !isspace(ch); }).base(), s.end());
+    return s;
+}
+
+vector<string> split(const string &str) {
+    vector<string> tokens;
+    string::size_type start = 0, end = 0;
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+        start = end + 1;
+    }
+    tokens.push_back(str.substr(start));
+    return tokens;
+}
+
+int main() {
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string first_multiple_input_temp;
+    getline(cin, first_multiple_input_temp);
+    vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
+
+    int n = stoi(first_multiple_input[0]); // board size
+    int k = stoi(first_multiple_input[1]); // number of obstacles
+
+    string second_multiple_input_temp;
+    getline(cin, second_multiple_input_temp);
+    vector<string> second_multiple_input = split(rtrim(second_multiple_input_temp));
+
+    int r_q = stoi(second_multiple_input[0]); // queen row
+    int c_q = stoi(second_multiple_input[1]); // queen column
+
+    vector<vector<int>> obstacles(k);
+    for (int i = 0; i < k; i++) {
+        obstacles[i].resize(2);
+        string obstacles_row_temp;
+        getline(cin, obstacles_row_temp);
+        vector<string> obstacles_row = split(rtrim(obstacles_row_temp));
+        obstacles[i][0] = stoi(obstacles_row[0]);
+        obstacles[i][1] = stoi(obstacles_row[1]);
+    }
+
+    int result = queensAttack(n, k, r_q, c_q, obstacles);
+    fout << result << "\n";
+    fout.close();
+
+    return 0;
+}
