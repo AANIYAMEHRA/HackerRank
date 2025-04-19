@@ -17,3 +17,20 @@ Input Format
 
 The first line contains a single integer, , the size of .
 The second line contains  space-separated integers, where each integer  describes the height of .
+
+
+CODE //
+
+int birthdayCakeCandles(vector<int> candles) {
+    int maxHeight = *max_element(candles.begin(), candles.end());
+    int count = 0;
+
+    for (int height : candles) {
+        if (height == maxHeight) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
