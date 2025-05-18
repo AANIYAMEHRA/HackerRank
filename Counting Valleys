@@ -1,0 +1,25 @@
+A hiker takes a number of steps either uphill (U) or downhill (D). A valley is defined as a sequence of steps below sea level that begins with a step down from sea level and ends with a step up to sea level.
+
+You need to count how many valleys the hiker walked through during the hike.
+
+
+CODE //
+
+
+int countingValleys(int steps, string path) {
+    int altitude = 0;
+    int valleys = 0;
+
+    for (char step : path) {
+        if (step == 'U') {
+            altitude++;
+            if (altitude == 0) {
+                valleys++;  // Just came up to sea level from a valley
+            }
+        } else if (step == 'D') {
+            altitude--;
+        }
+    }
+
+    return valleys;
+}
