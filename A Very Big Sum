@@ -1,4 +1,4 @@
-In this challenge, you need to calculate and print the sum of elements in an array, considering that some integers may be very large.
+<b><h3>In this challenge, you need to calculate and print the sum of elements in an array, considering that some integers may be very large.
 
 Function Description
 
@@ -19,12 +19,33 @@ Output Format
 Return the integer sum of the elements in the array.
 
 
-CODE  //
+CODE  //</h3></b>
 
-long aVeryBigSum(vector<long> ar) {
-    long sum = 0;
-    for (int i = 0; i < ar.size(); i++) {
-        sum += ar[i];
+#include <iostream>
+#include <vector>
+using namespace std;
+
+long long aVeryBigSum(vector<long long> arr) {
+    long long sum = 0;
+    
+    for(int i = 0; i < arr.size(); i++){
+        sum += arr[i]; 
     }
     return sum;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    
+    vector<long long> arr(n);
+    
+    for(int i = 0; i < n; i++){
+        cin>>arr[i];
+    }
+    
+    cout<<aVeryBigSum(arr);
+
+    return 0;
 }
