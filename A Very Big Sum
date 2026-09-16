@@ -1,21 +1,17 @@
 In this challenge, you need to calculate and print the sum of elements in an array, considering that some integers may be very large.
-
 Function Description
-
 Complete the  function with the following parameter(s):
 
-: an array of integers
+1.) an array of integers
 Return
 
-: the sum of the array elements
+2.) the sum of the array elements
 
 Input Format
-
 The first line of the input consists of an integer .
 The next line contains  space-separated integers contained in the array.
 
 Output Format
-
 Return the integer sum of the elements in the array.
 
 
@@ -37,13 +33,20 @@ long long aVeryBigSum(vector<long long> arr) {
 int main()
 {
     int n;
+    cout<<"Enter the range: ";
     cin>>n;
     
     vector<long long> arr(n);
     
     for(int i = 0; i < n; i++){
+        cout<<"Enter the number"<<i + 1<<": ";
         cin>>arr[i];
     }
+    
+    cout<<"Sum: "<<aVeryBigSum(arr);
+
+    return 0;
+}
     
     cout<<aVeryBigSum(arr);
 
