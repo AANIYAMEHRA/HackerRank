@@ -1,4 +1,4 @@
-<b><h3>In this challenge, you need to calculate and print the sum of elements in an array, considering that some integers may be very large.
+In this challenge, you need to calculate and print the sum of elements in an array, considering that some integers may be very large.
 
 Function Description
 
@@ -19,7 +19,7 @@ Output Format
 Return the integer sum of the elements in the array.
 
 
-CODE  //</h3></b>
+CODE  //
 
 #include <iostream>
 #include <vector>
