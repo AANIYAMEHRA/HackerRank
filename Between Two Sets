@@ -1,8 +1,8 @@
 There will be two arrays of integers. Determine all integers that satisfy the following two conditions:
 
-The elements of the first array are all factors of the integer being considered
-The integer being considered is a factor of all elements of the second array
-These numbers are referred to as being between the two arrays. Determine how many such numbers exist.
+1.) The elements of the first array are all factors of the integer being considered
+2.) The integer being considered is a factor of all elements of the second array
+3.) These numbers are referred to as being between the two arrays. Determine how many such numbers exist.
 
 Example
 
@@ -12,9 +12,7 @@ There are two numbers between the arrays:  and .
 ,  and ,  for the second value. Return .
 
 Function Description
-
 Complete the getTotalX function in the editor below. It should return the number of integers that are betwen the sets.
-
 getTotalX has the following parameter(s):
 
 int a[n]: an array of integers
@@ -42,36 +40,67 @@ Sample Output
 CODE  //
 
 
-int gcd(int a, int b) {
-    while (b != 0) {
-        int t = b;
-        b = a % b;
-        a = t;
-    }
-    return a;
-}
-
-int lcm(int a, int b) {
-    return a * b / gcd(a, b);
-}
+#include <iostream>
+#include <vector>
+using namespace std;
 
 int getTotalX(vector<int> a, vector<int> b) {
-    int lcm_a = a[0];
-    for (int i = 1; i < a.size(); i++) {
-        lcm_a = lcm(lcm_a, a[i]);
-    }
-
-    int gcd_b = b[0];
-    for (int i = 1; i < b.size(); i++) {
-        gcd_b = gcd(gcd_b, b[i]);
-    }
-
     int count = 0;
-    for (int i = lcm_a; i <= gcd_b; i += lcm_a) {
-        if (gcd_b % i == 0) {
+
+    // Check possible numbers from 1 to 100
+    for (int x = 1; x <= 100; x++) {
+        bool valid = true;
+
+        // Condition 1:
+        // Every element of a must be a factor of x
+        for (int i = 0; i < a.size(); i++) {
+            if (x % a[i] != 0) {
+                valid = false;
+                break;
+            }
+        }
+
+        // Condition 2:
+        // x must be a factor of every element of b
+        if (valid) {
+            for (int i = 0; i < b.size(); i++) {
+                if (b[i] % x != 0) {
+                    valid = false;
+                    break;
+                }
+            }
+        }
+
+        // If both conditions are satisfied
+        if (valid) {
             count++;
         }
     }
 
     return count;
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<int> a(n);
+    vector<int> b(m);
+
+    // Input first array
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    // Input second array
+    for (int i = 0; i < m; i++) {
+        cin >> b[i];
+    }
+
+    // Call the function
+    int result = getTotalX(a, b);
+
+    cout << result << endl;
+
+    return 0;
 }
