@@ -41,6 +41,7 @@ Constraints
 CODE //
 
 
+
 vector<int> compareTriplets(vector<int> a, vector<int> b) {
 
     int aliceScore = 0, bobScore = 0;
