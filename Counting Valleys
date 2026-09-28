@@ -1,9 +1,17 @@
 A hiker takes a number of steps either uphill (U) or downhill (D). A valley is defined as a sequence of steps below sea level that begins with a step down from sea level and ends with a step up to sea level.
-
 You need to count how many valleys the hiker walked through during the hike.
 
 
+
+
 CODE //
+
+
+
+
+1.) Optimal solution
+
+
 
 
 int countingValleys(int steps, string path) {
@@ -22,4 +30,49 @@ int countingValleys(int steps, string path) {
     }
 
     return valleys;
+}
+
+
+
+
+
+2.) Brute-Force approach
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int countingValleys(int steps, string path) {
+    int level = 0;
+    int valleys = 0;
+
+    for (char step : path) {
+        if (step == 'U') {
+            level++;
+
+            // Coming back to sea level from a valley
+            if (level == 0) {
+                valleys++;
+            }
+        } 
+        else {
+            level--;
+        }
+    }
+
+    return valleys;
+}
+
+int main() {
+    int steps;
+    string path;
+
+    cin >> steps;
+    cin >> path;
+
+    cout << countingValleys(steps, path);
+
+    return 0;
 }
