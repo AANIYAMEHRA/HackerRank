@@ -9,70 +9,41 @@ CODE //
 
 
 
-1.) Optimal solution
-
-
-
-
-int countingValleys(int steps, string path) {
-    int altitude = 0;
-    int valleys = 0;
-
-    for (char step : path) {
-        if (step == 'U') {
-            altitude++;
-            if (altitude == 0) {
-                valleys++;  // Just came up to sea level from a valley
-            }
-        } else if (step == 'D') {
-            altitude--;
-        }
-    }
-
-    return valleys;
-}
-
-
-
-
-
-2.) Brute-Force approach
-
-
-
-
 #include <iostream>
 using namespace std;
 
-int countingValleys(int steps, string path) {
-    int level = 0;
+int countingValleys(int steps, string path){
+    
+    int altitude = 0;
     int valleys = 0;
-
-    for (char step : path) {
-        if (step == 'U') {
-            level++;
-
-            // Coming back to sea level from a valley
-            if (level == 0) {
+    
+    for(char step: path){
+        if(step == 'U'){
+            altitude++;
+            if(altitude == 0){
                 valleys++;
             }
-        } 
-        else {
-            level--;
+        }else if(step == 'D'){
+            altitude--;
         }
     }
-
+    
     return valleys;
 }
 
-int main() {
+int main()
+{
     int steps;
     string path;
-
-    cin >> steps;
-    cin >> path;
-
-    cout << countingValleys(steps, path);
+    
+    cout<<"Number of steps: ";
+    cin>>steps;
+    
+    cout<<"Paths: ";
+    cin>>path;
+    
+    cout<<"Total number of valleys: "<<countingValleys(steps, path);
 
     return 0;
 }
+
