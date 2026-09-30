@@ -1,15 +1,12 @@
 Given an array of integers and a positive integer , determine the number of  pairs where  and  +  is divisible by .
 
+
+
 Example
-
-
-
 Three pairs meet the criteria:  and .
 
 Function Description
-
 Complete the divisibleSumPairs function in the editor below.
-
 divisibleSumPairs has the following parameter(s):
 
 int n: the length of array 
@@ -36,7 +33,12 @@ Sample Output
  5
 
 
+
+
 CODE  //
+
+
+
 
 
 int divisibleSumPairs(int n, int k, vector<int> ar) {
