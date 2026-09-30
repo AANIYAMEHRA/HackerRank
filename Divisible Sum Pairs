@@ -5,9 +5,11 @@ Given an array of integers and a positive integer , determine the number of  pai
 Example
 Three pairs meet the criteria:  and .
 
+
 Function Description
 Complete the divisibleSumPairs function in the editor below.
 divisibleSumPairs has the following parameter(s):
+
 
 int n: the length of array 
 int ar[n]: an array of integers
@@ -15,10 +17,12 @@ int k: the integer divisor
 Returns
 - int: the number of pairs
 
+
 Input Format
 
 The first line contains  space-separated integers,  and .
 The second line contains  space-separated integers, each a value of .
+
 
 Constraints
 
@@ -35,17 +39,23 @@ Sample Output
 
 
 
+
 CODE  //
 
 
 
 
 
+#include <iostream>
+#include <vector>
+using namespace std;
+
 int divisibleSumPairs(int n, int k, vector<int> ar) {
     int count = 0;
 
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
+
             if ((ar[i] + ar[j]) % k == 0) {
                 count++;
             }
@@ -53,4 +63,18 @@ int divisibleSumPairs(int n, int k, vector<int> ar) {
     }
 
     return count;
+}
+
+int main() {
+
+    vector<int> ar = {1, 3, 2, 6, 1, 2};
+
+    int n = ar.size();   
+    int k = 3;
+
+    int result = divisibleSumPairs(n, k, ar);
+
+    cout << "Total pairs: " << result << endl;
+
+    return 0;
 }
