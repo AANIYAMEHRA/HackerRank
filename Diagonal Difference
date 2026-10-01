@@ -3,14 +3,20 @@ For example, the square matrix  is shown below:
 
 
 
+
+
 1 2 3
 4 5 6
 9 8 9  
 
 
+
+
 The left-to-right diagonal = .
 The right-to-left diagonal = .
 Their absolute difference is .
+
+
 
 
 
@@ -20,8 +26,11 @@ Complete the  function with the following parameter:
 Return
 
 
+
 : the absolute difference in sums along the diagonals
 Input Format
+
+
 
 
 The first line contains a single integer, , the number of rows and columns in the square matrix .
@@ -31,10 +40,20 @@ Each of the next  lines describes a row, , and consists of  space-separated inte
 
 
 
+
+
 CODE //
 
 
 
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
 
 int diagonalDifference(vector<vector<int>> arr) {
     int n = arr.size();
@@ -46,4 +65,15 @@ int diagonalDifference(vector<vector<int>> arr) {
     }
 
     return abs(primaryDiagonal - secondaryDiagonal);
+}
+int main() {
+    vector<vector<int>> arr = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {9, 8, 9}
+    };
+
+    cout << "Absolute Difference: " <<diagonalDifference(arr);
+
+    return 0;
 }
