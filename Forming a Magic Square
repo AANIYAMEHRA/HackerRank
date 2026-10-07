@@ -85,3 +85,8 @@ int main() {
 
     return 0;
 }
+
+    cout << formingMagicSquare(s);
+
+    return 0;
+}
