@@ -70,6 +70,10 @@ CODE //
 
 
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 string kangaroo(int x1, int v1, int x2, int v2) {
     if (v1 == v2) {
         return (x1 == x2) ? "YES" : "NO";
@@ -81,4 +85,24 @@ string kangaroo(int x1, int v1, int x2, int v2) {
     }
 
     return "NO";
+}
+
+int main() {
+    int x1, v1, x2, v2;
+    
+    cout<<"starting position of Kangaroo 1: ";
+    cin >> x1;
+    
+    cout<<"jump distance of Kangaroo 1: ";
+    cin >> v1;
+    
+    cout<<"starting position of Kangaroo 2: ";
+    cin >> x2;
+    
+    cout<<"jump distance of Kangaroo 2: ";
+    cin >> v2;
+
+    cout <<"Kangaroos reach the SAME position after the SAME number of jumps: "<< kangaroo(x1, v1, x2, v2);
+
+    return 0;
 }
